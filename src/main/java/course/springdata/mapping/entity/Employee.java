@@ -9,13 +9,13 @@ import java.time.LocalDate;
 @Table(name = "employees")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NonNull
+
     private Long id;
     @NonNull
     private String firstName;
@@ -28,4 +28,6 @@ public class Employee {
     @ManyToOne
     @NonNull
     private Address address;
+
+
 }
