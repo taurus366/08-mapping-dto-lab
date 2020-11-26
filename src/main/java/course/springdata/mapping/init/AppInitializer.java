@@ -84,7 +84,8 @@ public class AppInitializer implements CommandLineRunner {
         TypeMap<Employee, ManagerDto> managerTypeMap = mapper.createTypeMap(Employee.class, ManagerDto.class)
                 .addMappings(m -> {
                     m.map(Employee::getSubordinates,ManagerDto::setEmployees);
-                    m.map(src -> src.getAddress().getCity(),ManagerDto::setCity);
+                  //  m.map(src -> src.getAddress().getCity(),ManagerDto::setCity);
+                  //  m.skip(ManagerDto::setCity);
                 });
         // Validate for TypeMap
         mapper.getTypeMap(Employee.class, EmployeeDto.class)
