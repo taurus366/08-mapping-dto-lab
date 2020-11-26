@@ -23,6 +23,8 @@ public class EmployeeDto {
 
     private String city;
 
+    private String managerLastName;
+
     @Override
     public String toString() {
         return "EmployeeDto{" +
@@ -32,6 +34,7 @@ public class EmployeeDto {
                 ", salary: " + salary +
                 ", birthday=" + birthday +
                 "city" + getCity() +
+                ", Manager" + managerLastName +
                 ", addressCountry='" + addressCountry + '\'' +
                 '}';
     }

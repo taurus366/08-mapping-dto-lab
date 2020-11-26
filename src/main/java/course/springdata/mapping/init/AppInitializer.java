@@ -84,7 +84,7 @@ public class AppInitializer implements CommandLineRunner {
         TypeMap<Employee, ManagerDto> managerTypeMap = mapper.createTypeMap(Employee.class, ManagerDto.class)
                 .addMappings(m -> {
                     m.map(Employee::getSubordinates,ManagerDto::setEmployees);
-                  //  m.map(src -> src.getAddress().getCity(),ManagerDto::setCity);
+                   m.map(src -> src.getAddress().getCity(),ManagerDto::setCity);
                   //  m.skip(ManagerDto::setCity);
                 });
         // Validate for TypeMap
@@ -100,5 +100,19 @@ public class AppInitializer implements CommandLineRunner {
         List<ManagerDto> managerDtos = managers.stream().map(managerTypeMap::map).collect(Collectors.toList());
         managerDtos.forEach(System.out::println);
 
+        // 3. Employees born after 1990 with manager last name
+        TypeMap employeeMap2 = mapper.getTypeMap(Employee.class, EmployeeDto.class)
+                .addMapping(
+                        src -> src.getManager().getLastName(),EmployeeDto::setManagerLastName
+                );
+
+        System.out.println("-".repeat(180) + "\n");
+
+        List<Employee> test = employeeService.getAllEmployeesBornBefore(LocalDate.of(1990, 1, 1));
+
+        test.forEach(System.out::println);
+
+        System.out.println("-".repeat(180) + "\n");
+        test.stream().map(employeeMap2::map).forEach(System.out::println);
     }
 }
