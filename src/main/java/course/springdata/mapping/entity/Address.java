@@ -20,4 +20,6 @@ public class Address {
     private String details;
     @NonNull
     private String country;
+
+
 }

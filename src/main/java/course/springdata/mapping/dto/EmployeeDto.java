@@ -20,4 +20,19 @@ public class EmployeeDto {
     private LocalDate birthday;
 
     private String addressCountry;
+
+    private String city;
+
+    @Override
+    public String toString() {
+        return "EmployeeDto{" +
+                "   -" + id +
+                ":'" + firstName + '\'' +
+                " " + lastName + '\'' +
+                ", salary: " + salary +
+                ", birthday=" + birthday +
+                "city" + getCity() +
+                ", addressCountry='" + addressCountry + '\'' +
+                '}';
+    }
 }
